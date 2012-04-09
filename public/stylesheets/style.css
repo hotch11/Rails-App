@@ -1,0 +1,102 @@
+body	{
+		background-image: url(images/background.png);
+		font-family: Calibri, Arial;
+		margin-left: auto;
+		margin-right: auto;
+		width: 800px;
+}
+
+#table	{
+		margin-left: auto;
+		margin-right: auto;
+		border-color: transparent;
+		font: 15px verdana, sans-serif;
+		text-align: center;
+		background: #C6CAD9;
+		border: 2px solid #000000;
+		width: 800px;
+		height: 900px;
+}
+
+table	{
+		font: 15px verdana, sans-serif;
+		text-align: center;
+		width: 800px;
+}
+
+
+
+
+#tabs {
+		color: #000000;
+		margin: 12px 0px 0px 0px;
+		padding: 0px;
+		z-index: 1;
+		padding-left: 10px }
+
+#tabs li {
+		display: inline;
+		overflow: hidden;
+		list-style-type: none; 
+}
+
+#tabs a, a.active {
+		color: #000000;
+		background: #C6CAD9;
+		font: bold 16px "Trebuchet MS", Arial, sans-serif;
+		border: 2px solid #000000;
+		padding: 2px 5px 0px 5px;
+		margin: 0;
+		text-decoration: none; 
+}
+
+#tabs a.active {
+		background: #C6CAD9;
+		border-bottom: 3px solid #C6CAD9; 
+}
+
+
+#content tr td {
+		color: #000000;
+		border: #000000;
+		font-weight: bold;
+		text-align: center;
+}
+
+#border	{
+		font: 15px verdana, sans-serif;
+		text-align: center;
+		background: #000000;
+		border: 2px solid #000000;
+		z-index: 2;	
+}
+
+a	{
+		font-weight: bold;
+}
+
+#links	{
+		text-align: center;
+}
+
+#inputbox	{
+
+  		width: 800px ;
+  		text-align: center;
+}
+
+li.lid{
+	font-weight: bold;
+	position:relative;
+	margin-left:400px;
+}
+
+li.login {
+
+	position:relative;
+	margin-left:550px;
+}
+
+
+
+

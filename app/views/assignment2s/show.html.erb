@@ -1,0 +1,33 @@
+<h1>Individual Asset</h1>
+<p>
+  <b>Name:</b>
+  <%=h @assignment2.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @assignment2.description %>
+</p>
+
+<p>
+  <b>Serial:</b>
+  <%=h @assignment2.serial %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%=h @assignment2.location %>
+</p>
+
+<p>
+ <b>Picture:</b>
+ <%= image_tag @assignment2.photo.url(:small) %>
+</p>
+
+
+
+<%= link_to 'Back', assignment2s_path %>
+<% if logged_in? %>
+<%= link_to 'Edit', edit_assignment2_path(@assignment2) %> |
+<%= link_to 'Delete', @assignment2, :confirm => 'Are you sure?', :method => :delete %>
+<% end %>

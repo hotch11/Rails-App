@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Assignment2s: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'style.css' %>
+  <%= javascript_include_tag 'jquery' %>
+
+
+<script type="text/javascript">
+(function( $ ){
+
+  jQuery.fn.observe_field = function(frequency, callback) {
+
+    frequency = frequency * 1000; // translate to milliseconds
+
+    return this.each(function(){
+      var $this = $(this);
+      var prev = $this.val();
+
+      var check = function() {
+        var val = $this.val();
+        if(prev != val){
+          prev = val;
+          $this.map(callback); // invokes the callback on $this
+        }
+      };
+
+      var reset = function() {
+        if(ti){
+          clearInterval(ti);
+          ti = setInterval(check, frequency);
+        }
+      };
+
+      check();
+      var ti = setInterval(check, frequency); // invoke check periodically
+
+      // reset counter after user interaction
+      $this.bind('keyup click mousemove', reset); //mousemove is for selects
+    });
+
+  };
+
+})( jQuery );
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+  $("#user_username").observe_field("1", function( ) {
+
+
+  var form = $("#user_username");
+
+  var formData = "user_username=" + $("#user_username").val();
+
+
+
+ $.get("/usernametaken", formData, function(html) {
+	$("#taken").html(html);
+    });
+  });
+});
+
+</script>
+  <%= auto_discovery_link_tag :atom,formatted_assignment2s_path(:atom) %>
+
+<link rel="shortcut icon" type="image/gif" href="../images/ljmu icon.gif">
+</head>
+<p style="color: green"><%= notice %></p>
+<body>
+
+<div>
+<img src=<%= link_to image_tag("LJMU Banner.png", :border=>0, :class => 'dock-item'), 
+:action => 'search', :controller => 'pages'%></a>
+</div>
+
+
+<p>
+</p>
+
+<ul id="tabs">
+
+<li><%= link_to 'Home', assignment2s_path %></li>
+<li><%= link_to 'New asset', new_assignment2_path %></li>
+<% if logged_in? %>
+<li class="lid">Logged in as <%= current_user.username %></li>
+<%= link_to 'Logout', logout_path %>
+<% else %>
+<li class="login"><%= link_to 'Login', login_path %></li>
+<% end %>
+
+</ul>
+
+<div id="table">
+
+<%= yield %>
+
+</div>
+
+<div id="links">
+
+<%= link_to "Accessibility", accessibility_path, :accesskey=>"0" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<%= link_to "Sitemap", sitemap_path, :accesskey=>"3" %>
+
+</div>
+
+</body>
+</html>

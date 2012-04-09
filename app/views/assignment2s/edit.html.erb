@@ -1,0 +1,42 @@
+<h1>Edit Asset</h1>
+
+<% if logged_in? %>
+<% form_for @assignment2, :html => { :multipart => true } do |f| %>
+
+  <%= f.error_messages %>
+
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :serial %><br />
+    <%= f.text_field :serial %>
+  </p>
+  <p>
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </p>
+<p>
+ <%= f.label :picture %><br />
+ <%= image_tag @assignment2.photo.url(:small) %>
+</p>
+<p>
+  <%= f.file_field :photo %>
+</p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @assignment2 %> |
+<%= link_to 'Back', assignment2s_path %>
+<%= link_to 'Delete', @assignment2, :confirm => 'Are you sure?', :method => :delete %>
+<% else %>
+<%= link_to "Log In", login_path %>
+<% end %>

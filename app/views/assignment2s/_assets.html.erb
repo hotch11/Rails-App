@@ -1,0 +1,27 @@
+<%= will_paginate @assignment2s %><br>
+<h1>Listing Assets</h1>
+
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Serial</th>
+    <th>Location</th>
+  </tr>
+
+<% @assignment2s.each do |assignment2| %>
+  <tr>
+    <td><%=h assignment2.name %></td>
+    <td><%=h assignment2.description %></td>
+    <td><%=h assignment2.serial %></td>
+    <td><%=h assignment2.location %></td>
+    <td><%= link_to 'Show', assignment2 %></td>
+<% if logged_in? %>
+    <td><%= link_to 'Edit', edit_assignment2_path(assignment2) %></td>
+    <td><%= link_to 'Delete', assignment2, :confirm => 'Are you sure?', :method => :delete %></td>
+<% end %>  
+</tr>
+<% end %>
+</table>
+<%= will_paginate @assignment2s %>
